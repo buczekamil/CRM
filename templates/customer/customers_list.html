@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">List of customers</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="30%" cellspacing="0">
+
+                    <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Company name</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Phone number</th>
+                        <th>E-mail</th>
+                        <th>Status</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Zip code</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Company</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Phone number</th>
+                        <th>E-mail</th>
+                        <th>Status</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Zip code</th>
+
+                    </tr>
+                    </tfoot>
+                    <tbody>
+
+                    {% for customer in customers %}
+
+                        <tr>
+                            <td>{{ customer.customer_number }}</td>
+                            <td>{{ customer.company }}</td>
+                            <td>{{ customer.first_name }}</td>
+                            <td>{{ customer.last_name }}</td>
+                            <td>{{ customer.phone }}</td>
+                            <td>{{ customer.e_mail }}</td>
+                            <td>{{ customer.get_status_display }}</td>
+                            <td>{{ customer.address }}</td>
+                            <td>{{ customer.city }}</td>
+                            <td>{{ customer.zip }}</td>
+                            <td><a href="/edit_customer/{{ customer.customer_number }}"
+                                   class="btn btn-info btn-circle "><i class="fas fa-info-circle"></i></a></td>
+                            <td><a href="/delete_customer/{{ customer.customer_number }}"
+                                   class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a></td>
+                        </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}

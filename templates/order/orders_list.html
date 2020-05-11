@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">List of orders</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                    <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer ID</th>
+                        <th>Company</th>
+                        <th>Status</th>
+                        <th>Order date</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer ID</th>
+                        <th>Company</th>
+                        <th>Status</th>
+                        <th>Order date</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+
+                    {% for order in orders %}
+
+                        <tr>
+                            <td><a href="/edit_order/{{ order.id}}">{{ order.id }}</a></td>
+                            <td>{{ order.customer_id.customer_number }}</td>
+                            <td>{{ order.customer_id.company }}</td>
+                            <td>{{ order.get_status_display }}</td>
+                            <td>{{ order.date }}</td>
+
+
+                            <td><a href="/order/{{ order.id }}"><img  src="https://getdrawings.com/free-icon/details-icon-png-64.png" height=40px></a></td>
+
+                        </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <p><a href="/add_order/" class="btn btn-secondary btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+        <span class="text">Add order</span>
+    </a></p>
+
+
+
+
+
+{% endblock %}

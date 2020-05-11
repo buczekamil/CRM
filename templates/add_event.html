@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <form method="post">
+
+        {% csrf_token %}
+      <div><label><h4 class="m-0 font-weight-bold text-primary">New event</h4></label></div>
+
+
+        <div style="text-align: left;">
+            {{ form.as_p }}
+        </div>
+        <button class="btn btn-success btn-circle" type="submit" style="float: right"> <i class="fas fa-check"></i>
+        </button>
+ <a href="/calendar/events" style="float: inherit">
+                    <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/return-62-563580.png" height=40px">
+                  </a>
+    </form>
+{% endblock %}
+
+
+

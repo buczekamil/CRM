@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <a href="/pdf_generate/{{ order.id }}"><img src="https://img.pngio.com/pdf-icon-png-image-with-transparent-background-toppng-pdf-icon-png-840_859.png" style="height: 40px"></a>
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+        <thead>
+        <tr>
+            <th>Order number</th>
+            <th>Customer</th>
+            <th>Order date</th>
+            <th>Invoice date</th>
+            <th>Tax rate:</th>
+            <th>Status</th>
+            <th>NET order value</th>
+            <th>GROSS order value</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.customer_id }}</td>
+            <td>{{ order.date }}</td>
+            <td>{{ order.get_invoices_days_display }}</td>
+            <td>{{ order.get_tax_display }}</td>
+            <td>{{ order.get_status_display }}</td>
+            <td>{{order_net_value}}</td>
+            <td>{{ order_gross_value }}</td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    {% if order.status == 2 %}
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div>{{ text }}</div>
+            <input type="submit" value="Add to order">
+
+        </form>
+        <table class="table table-bordered" id="dataTable" width="80%" cellspacing="0">
+
+            <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product name</th>
+
+                <th>Quantity</th>
+                <th>Total price</th>
+            </tr>
+            </thead>
+            {% for line in lines %}
+
+                <tbody>
+
+                <tr>
+                    <td>{{ line.product_selected_id }}</td>
+                    <td>{{ line.product_selected_name }}</td>
+                    <td>{{ line.quantity }}</td>
+                    <td>{{ line.total }}</td>
+                    <td><a href="/delete_line/{{ line.id}}"
+                                   class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a></td>
+                        </tr>
+                </tr>
+            {% endfor %}
+
+
+            </tbody>
+
+        </table>
+    {% endif %}
+{% endblock %}

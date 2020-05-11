@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+
+        {% csrf_token %}
+        <label><h4 class="m-0 font-weight-bold text-primary">Do you really want to delete this record ?</h4></label>
+        <div style="text-align: right;">
+            {{ form.as_p }}
+        </div>
+        <button class="btn btn-danger btn-circle"  type="submit" style="float: right"><i class="fas fa-trash"></i>
+        </button>
+        <a href="/customers_list/"  style="float: inherit">
+                                <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/return-62-563580.png" height=40px">
+
+        </a>
+    </form>
+{% endblock %}
+
+
+
+

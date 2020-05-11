@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="col-lg-12">Hi {{ user.username }}!
+{% else %}
+ You are not logged in</div>
+{% endif %}
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+
+
+          <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-10 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Latest created customer</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="/customers_list/">Company: {{latest_customer.company}}</a></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Recent order</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Order id: <a href="/orders/">{{latest_order.id}}</a></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+                        <div class="col-auto">
+                     <a href = "/calendar/events/"> <img class="fas fa-dollar-sign fa-2x text-gray-300" width=25% src="https://media.istockphoto.com/illustrations/calendar-icon-blue-round-button-illustration-id904479164?k=6&m=904479164&s=170667a&w=0&h=Hedl9Bax7TlFb_bgeOtSmz4ed6Cj80T7WVvdYuWueZw="></a>
+                          </div>
+                        </div>
+
+
+
+
+          <div class="row">
+
+            <div class="col-lg-6">
+
+              <!-- Basic Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Information</h6>
+                </div>
+                <div class="card-body">
+{{ text_1 }}
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-lg-6">
+ <!-- Collapsable Card Example -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                  <h6 class="m-0 font-weight-bold text-primary">Events</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCardExample">
+                  <div class="card-body">
+                    {%  for event in current_events %}
+
+
+
+                      <strong>{{ event.title }} </strong>- {{event.description}}<br> Period: <strong>{{ event.start_date }}</strong>  - <strong>{{ event.end_date }}</strong><br>
+                       {% endfor %}
+                  </div>
+                </div>
+              </div>
+              <!-- Dropdown Card Example -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">News</h6>
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+{{ text_2 }}
+                </div>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+                {% endblock %}

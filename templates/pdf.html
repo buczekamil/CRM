@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CRM project</title>
+
+</head>
+<body>
+<h2>Date: <strong>{{ today}}</strong></h2>
+    <table style="text-align: center; border: 1px solid black;" >
+
+        <thead>
+        <tr>
+            <th>Order number</th>
+            <th>Customer</th>
+            <th>Order date</th>
+            <th>Invoice date</th>
+            <th>Tax rate:</th>
+            <th>Status</th>
+            <th>NET</th>
+            <th>GROSS</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.customer_id }}</td>
+            <td>{{ order.date }}</td>
+            <td>{{ order.get_invoices_days_display }}</td>
+            <td>{{ order.get_tax_display }}</td>
+            <td>{{ order.get_status_display }}</td>
+            <td>{{order_net_value}} </td>
+            <td>{{ order_gross_value }} </td>
+
+        </tr>
+        </tbody>
+    </table>
+<div>
+    <text style="text-align: center"><h3>ORDER DETAILS</h3></text>
+        <table style="text-align: center; border: 1px solid black; padding-left: -5px">
+
+            <thead>
+            <tr>
+                <th style="text-align:center">Product ID</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Line total price</th>
+            </tr>
+            </thead>
+            {% for line in lines %}
+
+                <tbody>
+
+                <tr style = "height: 30px">
+                    <td >  {{ line.product_selected_id }}</td>
+                    <td>  {{ line.product_selected_name }}</td>
+                    <td>  {{ line.quantity }}</td>
+                    <td>  {{ line.total }}</td>
+
+                        </tr>
+            {% endfor %}
+
+
+            </tbody>
+
+        </table>
+</div>
+</body>
+
+</html>

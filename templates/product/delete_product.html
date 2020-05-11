@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+
+        {% csrf_token %}
+        <label><h4 class="m-0 font-weight-bold text-primary">Do you really want to delete this record ?</h4></label>
+        <div style="text-align: right;">
+            {{ form.as_p }}
+        </div>
+        <button class="btn btn-success btn-circle" type="submit" style="float: right"><i class="fas fa-check"></i>
+        </button>
+        <a href="/products_list/" class="btn btn-danger btn-circle" style="float: inherit">
+            <i class="fas fa-trash"></i>
+        </a>
+    </form>
+{% endblock %}
+
+
+
+

@@ -168,8 +168,10 @@ class OrderLineDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteVie
 
 class HomeView(LoginRequiredMixin, View):
     def get(self, request):
-        text_1 = TextBox.objects.get(id=1)
-        text_2 = TextBox.objects.get(id=2)
+        # text_1 = TextBox.objects.get(id=1)
+        # text_2 = TextBox.objects.get(id=2)
+        text_1 = "Text1"
+        text_2 = "Text2"
         current_events = Event.objects.filter(end_date__gte=date.today())
         latest_customer = Customer.objects.last()
         latest_order = Order.objects.last()

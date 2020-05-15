@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'CRM',
         'HOST': 'localhost',
         'USER': 'postgres',
-        'PASSWORD': 'coderslab'
+        'PASSWORD': 'yuliop'
     }
 }
 
@@ -129,7 +129,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
         ## Logowanie
-LOGIN_REDIRECT_URL = '/home/'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 
         ### Resetowanie hasła
